@@ -2,6 +2,9 @@ package com.gameBNP;
 
 import com.gameBNP.enums.Piece;
 import com.gameBNP.exceptions.FirstPlayerException;
+import com.gameBNP.exceptions.NextPlayerIsTheSameOneException;
+import com.gameBNP.exceptions.PositionAlreadyOccupied;
+import com.gameBNP.exceptions.PositionOutsideBoardException;
 import com.gameBNP.model.Game;
 import com.gameBNP.model.Player;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,7 +34,7 @@ class TictoctoeApplicationTests {
     @Test
     void whenStartGameThePlayerXShouldStartFirstTest() {
         // game is empty
-        assertThrows(FirstPlayerException.class, () -> game.play(playerO));
+        assertThrows(FirstPlayerException.class, () -> game.play(2,3, playerO));
     }
 
     //test Players alternate placing X’s and O’s on the board

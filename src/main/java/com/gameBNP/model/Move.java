@@ -1,5 +1,8 @@
 package com.gameBNP.model;
 
+import lombok.Data;
+
+@Data
 public class Move {
     Player player;
 
