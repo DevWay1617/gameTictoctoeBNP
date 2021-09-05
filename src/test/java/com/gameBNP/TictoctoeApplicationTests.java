@@ -63,58 +63,12 @@ class TictoctoeApplicationTests {
         assertThrows(PositionOutsideBoardException.class, () -> game.play(5, 5, playerX));
     }
 
-/*
-    */
-/* scenario 1:the Payer X win despite the 9 positions are not yet filled
-        X O .
-        O X .
-        X O X
-    *//*
 
-
-    @Test
-    void whenBoardIsNotFullwithWinnerThenGameisOver() {
-        game.play(1, 1, playerX); // the Player X is always the First
-        game.play(1, 2, playerO);
-        game.play(2, 2, playerX);
-        game.play(1, 3, playerO);
-        game.play(3, 1, playerX);
-        game.play(2, 1, playerO);
-        game.play(3, 3, playerX);
-
-        assertEquals(game.getGameStatus(), GameStatus.OVER_WITH_WINNER);
-
-    }
-
-*/
-
-/* scenario 1: the Payer O win and all  positions are  filled
-        X O O
-        O X O
-        X O O
-    *//*
-
-    @Test
-    void whenBoardIsFullwithWinnerThenGameisOver() {
-        game.play(1, 1, playerX); // the Player X is always the First
-        game.play(1, 2, playerO);
-        game.play(2, 2, playerX);
-        game.play(1, 3, playerO);
-        game.play(3, 1, playerX);
-        game.play(2, 1, playerO);
-        game.play(3, 3, playerX);
-        game.play(3, 2, playerO);
-
-        assertEquals(game.getGameStatus(), GameStatus.OVER_WITH_WINNER);//
-
-    }
-
-    */
-/* scenario 2:Draw
+/* scenario :Draw
        O X X
        X O O
        X O X
-    *//*
+    */
 
     @Test
     void whenBoardIsFullwithoutWinnerThenGameisDraw() {
@@ -130,25 +84,8 @@ class TictoctoeApplicationTests {
         assertEquals(game.getGameStatus(), GameStatus.DRAW); //All the bord is Fully , there are no winner => Draw
 
     }
-*/
 
-    /* scenario 3 :InProgress
-        X O O
-        O X O
-        X . .
-    */
-    @Test
-    void whenOneOfPlayerFillUpThreeVerticalSuccessiveMarkersThenGameisOver() {
-        game.play(1, 1, playerX); // the Player X is always the First
-        game.play(1, 2, playerO);
-        game.play(2, 1, playerX);
-        game.play(1, 3, playerO);
-        game.play(3, 1, playerX);
-        assertEquals(game.getGameStatus(), GameStatus.IN_PROGRESS);
-    }
-
-
-    /* scenario 4 :InProgress
+    /* scenario  :InProgress
         X O O
         O . .
         X . .
