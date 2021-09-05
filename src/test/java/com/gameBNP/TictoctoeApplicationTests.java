@@ -1,5 +1,6 @@
 package com.gameBNP;
 
+import com.gameBNP.enums.GameStatus;
 import com.gameBNP.enums.Piece;
 import com.gameBNP.exceptions.FirstPlayerException;
 import com.gameBNP.exceptions.NextPlayerIsTheSameOneException;
@@ -62,49 +63,59 @@ class TictoctoeApplicationTests {
         assertThrows(PositionOutsideBoardException.class, () -> game.play(5, 5, playerX));
     }
 
-    /* scenario 1:the Payer X win despite the 9 positions are not yet filled
-        X O O
+/*
+    */
+/* scenario 1:the Payer X win despite the 9 positions are not yet filled
+        X O .
         O X .
         X O X
-    */
+    *//*
+
+
     @Test
-    void whenBoardIsFullwithWinnerThenGameisOver() {
+    void whenBoardIsNotFullwithWinnerThenGameisOver() {
         game.play(1, 1, playerX); // the Player X is always the First
         game.play(1, 2, playerO);
-        game.play(1, 3, playerO);
-        game.play(2, 1, playerO);
         game.play(2, 2, playerX);
+        game.play(1, 3, playerO);
         game.play(3, 1, playerX);
-        game.play(3, 2, playerO);
+        game.play(2, 1, playerO);
         game.play(3, 3, playerX);
-        assertEquals(game.getGameStatus(), GameStatus.Win);
+
+        assertEquals(game.getGameStatus(), GameStatus.OVER_WITH_WINNER);
 
     }
 
-    /* scenario 1: the Payer O win and all  positions are  filled
+*/
+
+/* scenario 1: the Payer O win and all  positions are  filled
         X O O
         O X O
         X O O
-    */
+    *//*
+
     @Test
     void whenBoardIsFullwithWinnerThenGameisOver() {
         game.play(1, 1, playerX); // the Player X is always the First
         game.play(1, 2, playerO);
-        game.play(1, 3, playerO);
-        game.play(2, 1, playerO);
         game.play(2, 2, playerX);
+        game.play(1, 3, playerO);
         game.play(3, 1, playerX);
-        game.play(3, 2, playerO);
+        game.play(2, 1, playerO);
         game.play(3, 3, playerX);
-        assertEquals(game.getGameStatus(), GameStatus.Win);//
+        game.play(3, 2, playerO);
+
+        assertEquals(game.getGameStatus(), GameStatus.OVER_WITH_WINNER);//
 
     }
 
-    /* scenario 2:Draw
+    */
+/* scenario 2:Draw
        O X X
        X O O
        X O X
-    */
+    *//*
+
     @Test
     void whenBoardIsFullwithoutWinnerThenGameisDraw() {
         game.play(1, 2, playerX); // the Player X is always the First
@@ -119,10 +130,11 @@ class TictoctoeApplicationTests {
         assertEquals(game.getGameStatus(), GameStatus.DRAW); //All the bord is Fully , there are no winner => Draw
 
     }
+*/
 
-    /* scenario 3 :Over
+    /* scenario 3 :InProgress
         X O O
-        X . .
+        O X O
         X . .
     */
     @Test
@@ -132,23 +144,23 @@ class TictoctoeApplicationTests {
         game.play(2, 1, playerX);
         game.play(1, 3, playerO);
         game.play(3, 1, playerX);
-        assertEquals(game.getGameStatus(), GameStatus.OVER);
+        assertEquals(game.getGameStatus(), GameStatus.IN_PROGRESS);
     }
 
 
-    /* scenario 4 :Over
+    /* scenario 4 :InProgress
         X O O
-        X . .
+        O . .
         X . .
     */
     @Test
-    void whenOneOfPlayerFillUpThreeDiagonalyRightSuccessiveMarkersThenGameisOver() {
+    void whenOneOfPlayerFillUpThreeDiagonalyRightSuccessiveMarkersThenGameIsOver() {
         game.play(1, 3, playerX); // the Player X is always the First
         game.play(2, 1, playerO);
         game.play(2, 2, playerX);
         game.play(3, 2, playerO);
         game.play(3, 1, playerX);
-        assertEquals(game.getGameStatus(), GameStatus.OVER);
+        assertEquals(game.getGameStatus(), GameStatus.IN_PROGRESS);
 
     }
 
