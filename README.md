@@ -9,3 +9,7 @@ all tests are in com.game.tictoctoe.TictoctoeApplicationTests.java
 cd to the project directory and execute :
 
 mvn test
+
+No client has been developed. But it's possible to interact and test the API through swagger openApi url:
+
+http://localhost:8080/swagger-ui-custom.html or http://localhost:8080/api-docs
